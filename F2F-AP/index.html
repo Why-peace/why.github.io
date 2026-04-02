@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="F2F-AP: Flow-to-Future Asynchronous Policy for Real-time Dynamic Manipulation">
+    <meta name="author" content="Haoyu Wei,
+                                 Xiuwei Xu,
+                                 Ziyang Cheng,
+                                 Hang Yin,
+                                 Angyuan Ma,
+                                 Bingyao Yu,
+                                 Jie Zhou,
+                                 Jiwen Lu">
+
+    <title>F2F-AP: Flow-to-Future Asynchronous Policy for Real-time Dynamic Manipulation</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>F2F-AP: Flow-to-Future Asynchronous Policy for Real-time Dynamic Manipulation</h2>
+    <!-- <h3>ECCV 2024</h3> -->
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p>
+        <span style="white-space: nowrap; font-size:larger">
+        Haoyu Wei<sup>1</sup>&nbsp;&nbsp;
+        <a href="https://xuxw98.github.io/">Xiuwei Xu</a><sup>1*</sup>&nbsp;&nbsp;
+        Ziyang Cheng<sup>1</sup>&nbsp;&nbsp;
+        Hang Yin<sup>1</sup>&nbsp;&nbsp;
+        Angyuan Ma<sup>1</sup>&nbsp;&nbsp;
+        Bingyao Yu<sup>1</sup>&nbsp;&nbsp;
+        Jie Zhou<sup>1</sup>&nbsp;&nbsp;
+        Jiwen Lu<sup>1<!--&#8224;--></sup>
+        </span>
+        <br><br>
+        <sup>1</sup>Department of Automation, Tsinghua University<br>
+        <br><br>
+        <!-- <a href="https://arxiv.org/abs/2305.03716" target="_blank" style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/file.png" alt="paper" style="vertical-align: middle;">
+            &nbsp;Paper (arXiv)
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://github.com/xuxw98/DSPDet3D" target="_blank" style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="code" style="vertical-align: middle;">
+            &nbsp;Code (GitHub)
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://zhuanlan.zhihu.com/p/714402773" target="_blank" style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/zhihu.png" alt="code" style="vertical-align: middle;">
+            &nbsp;中文解读 (Zhihu)
+        </a> -->
+    </p>
+
+    <!-- <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2006.09661">Paper</a>
+        <a class="btn btn-primary" href="https://colab.research.google.com/github/vsitzmann/siren/blob/master/explore_siren.ipynb">Colab Notebook</a>
+        <a class="btn btn-primary" href="https://dcato98.github.io/playground/#activation=sine">Tensorflow Playground</a>
+        <a class="btn btn-primary" href="https://github.com/vsitzmann/siren">Code</a>
+        <a class="btn btn-primary" href="https://drive.google.com/drive/u/1/folders/1_iq__37-hw7FJOEUK1tX7mdp8SKB368K">Data</a>
+    </div> -->
+</div>
+
+<div class="container">
+    <!-- <div class="vcontainer">
+        <iframe class='video' src="https://www.youtube.com/embed/Wq-cIRnKhw0" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+    <p>
+            If video does not load, click <a href="https://cloud.tsinghua.edu.cn/f/82bc67d4775c4f0ea8f8/?dl=1">HERE</a> to download.
+        </p> -->
+
+    <div style="text-align: center;">
+        <video controls playsinline style="max-width: 100%; height: auto;">
+            <source src="videos/demo_tiny.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="section">
+        <h2>Abstract</h2>
+        <hr>
+        <p>
+            Asynchronous inference has emerged as a prevalent paradigm in robotic manipulation, achieving significant progress in ensuring trajectory smoothness and efficiency. However, a systemic challenge remains unresolved, as inherent latency causes generated actions to inevitably lag behind the real-time environment. This issue is particularly exacerbated in dynamic scenarios, where such temporal misalignment severely compromises the policy's ability to interpret and react to rapidly evolving surroundings. In this paper, we propose a novel framework that leverages predicted object flow to synthesize future observations, incorporating a flow-based contrastive learning objective to align the visual feature representations of predicted observations with ground-truth future states. Empowered by this anticipated visual context, our asynchronous policy gains the capacity for proactive planning and motion, enabling it to explicitly compensate for latency and robustly execute manipulation tasks involving actively moving objects. Experimental results demonstrate that our approach significantly enhances responsiveness and success rates in complex dynamic manipulation tasks.
+        </p>
+        <!-- add a image here-->
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="images/teaser.png" alt="pipeline" width="100%">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Approach</h2>
+        <hr>
+        <p>
+            F2F-AP aims to resolve the latency problem inherent in asynchronous policies by utilizing temporally aligned future proprioceptive states and visual observations, which can be formulated as follows:
+        </p>
+        <p style="text-align: center;">
+            <i>&pi;(<b>a</b><sub>t+H:t+H+n</sub> | <b>s</b><sub>t+H</sub>, o&#770;<sub>t+H</sub>)</i>
+        </p>
+        <p>
+            First, F2F-AP employs predicted object flow as a bridge to synthesize future observations, ensuring alignment with the ground truth within the feature space. Furthermore, the action chunks generated by F2F-AP are strictly aligned with the exact moment of execution, effectively eliminating the need for discarding initial <i>H</i> action steps or employing post-hoc action fusion algorithms. Through this design, F2F-AP substantially improves the model's performance on dynamic tasks.
+        </p>
+        <!-- add a image here-->
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="images/pipeline.png" alt="pipeline" width="90%">
+            </div>
+        </div>
+        <p>
+            <b>Left:</b> Illustration of the asynchronous inference achieved by F2F-AP. The model plans from a future state <i>s</i><sub>t3</sub> towards the anticipated position <i>t</i><sub>6</sub> of the interacting object at timestamp <i>t</i><sub>1</sub>, enabling advance planning and motion despite real-world system latency. <b>Middle:</b> The model takes robot states and multi-frame RGB images as input. A <i>Flow Predictor</i> extracts object flow to synthesize augmented future observations, which are then processed by the <i>Policy</i> as future observation to generate action chunks. <b>Right:</b> We introduce contrastive learning to minimize the feature distance between predicted and real future observations. The <span style="color: rgb(241, 191, 51);">&#9733;</span> indicates that these features share the same encoder.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Experiments</h2>
+        <hr>
+        <p>
+            To assess the capability of F2F-AP in real-time dynamic scenarios, we designed five tasks for grasping moving objects, executed on two different robots.
+        </p>
+        <!-- add a image here-->
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="images/exp.png" alt="pipeline" width="90%">
+            </div>
+        </div>
+        <p>
+            Through comparative experiments involving different inference modalities for imitation learning policies, we demonstrate that F2F-AP significantly enhances policy performance in real-time dynamic tasks with system latency.
+        </p>
+        <div style="text-align: center;">
+            <video controls playsinline style="max-width: 100%; height: auto;">
+                <source src="videos/pick_rolling_bottal.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p style="text-align: center;">
+            More stochastic and non-linear experiment.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+            <div class="bibtexsection">
+        coming soon
+            </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <!-- <h6>Acknowledgement</h6> -->
+        <p><small>The website template was borrowed from <a href="https://liuff19.github.io/S-Ray/">Fangfu Liu</a></small></p>
+    </footer>
+</div>
+
+    <!-- <p><center>
+        <div id="clustrmaps-widget" style="width:30%">
+            <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=eRnCB4-HrSw_k86xQMK_G8k71J2xtdHboK6TdVmh9pQ&cl=ffffff&w=a"></script>    
+        </div>        
+        <br>
+        &copy; Haoyu Wei | Last update: Apr. 2026
+    </center></p> -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
