@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Haoyu Wei</title>
+  <meta name="author" content="Haoyu Wei">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #f3f3f3;
+    }
+
+    .navbar li {
+      float: left;
+    }
+
+    .navbar li a {
+      display: block;
+      color: #666;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+
+    .navbar li a.active {
+      color: white;
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="index.html">Main Page</a></li>
+      <li><a href="pubs.html">Publications</a></li>
+      <!-- Projects page link is disabled until you add your own project content.
+      <li><a href="projects.html">Projects</a></li>
+      -->
+      <li style="float:right"><a class="active" href="#about">About</a></li>
+    </ul>
+  </div>
+
+  <table style="width:100%;max-width:860px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table id="about" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:60%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Haoyu Wei | Wei Haoyu</name>
+              </p>
+              <p>
+                I am a first-year M.S. student in the Department of Automation at Tsinghua University, advised by Prof. <a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a>. In 2025, I obtained my B.Eng. in the Department of Automation from Beihang University.
+              </p>
+              <p>
+                I work on computer vision and robotics. My current research focuses on:
+              </p>
+              <ul>
+                <li style="margin: 5px;"><b style="color:brown">Efficient Manipulation</b> that optimizes asynchronous inference and improves imitation learning paradigms.</li>
+                <li style="margin: 5px;"><b style="color:green">Visual Navigation</b> that enables robots to autonomously explore environments according to visual observations and instructions.</li>
+                <li style="margin: 5px;"><b style="color:orange">Dexterous Manipulation</b> that builds tactile-aware general manipulation models with dexterous hands.</li>
+              </ul>
+              <p style="text-align:center">
+                <a href="mailto:weihy25@mails.tsinghua.edu.cn">Email</a>
+              </p>
+            </td>
+            <td style="padding:0%;width:40%;max-width:40%">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/why.jpg">
+            </td>
+          </tr>
+        </tbody></table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="text-indent:20px;width:100%;vertical-align:middle">
+              <p>*Equal contribution</p>
+              <p><heading>Publications</heading></p>
+            </td>
+          </tr>
+        </tbody></table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/F2F-AP.gif" alt="F2F-AP preview">
+            </td>
+            <td width="75%" valign="center">
+              <papertitle>F2F-AP: Flow-to-Future Asynchronous Policy for Real-time Dynamic Manipulation</papertitle>
+              <br>
+              <strong>Haoyu Wei</strong>, Xiuwei Xu, Ziyang Cheng, Hang Yin, Angyuan Ma, Bingyao Yu, Jie Zhou, Jiwen Lu
+              <br>
+              <em>arXiv</em>, 2026
+              <br>
+              <a href="https://arxiv.org/abs/2604.02408">[arXiv]</a> <a href="https://why-peace.github.io/F2F-AP/">[Project Page]</a>
+              <br>
+              <p>To address observation lag in asynchronous inference, we use optical-flow prediction and contrastive learning to predict future observations in the feature space, align actions with their true execution timeline, and improve success rates on highly dynamic tasks.</p>
+            </td>
+          </tr>
+        </tbody></table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/GC-VLN.gif" alt="GC-VLN preview">
+            </td>
+            <td width="75%" valign="center">
+              <papertitle>GC-VLN: Instruction as Graph Constraints for Training-free Vision-and-Language Navigation</papertitle>
+              <br>
+              Hang Yin*, <strong>Haoyu Wei</strong>*, Xiuwei Xu, Wenxuan Guo, Jie Zhou, Jiwen Lu
+              <br>
+              <em>arXiv</em>, 2025
+              <br>
+              <a href="https://arxiv.org/abs/2509.10454">[arXiv]</a> <a href="https://bagh2178.github.io/GC-VLN/">[Project Page]</a>
+              <br>
+              <p>We propose a general framework for mobile manipulation, which can be divided into docking point selection and fixed-base manipulation. We model the docking point selection stage as an optimization process, to let the agent move and touch target keypoint under several constraints.</p>
+            </td>
+          </tr>
+        </tbody></table>
+
+        <!-- Publication item template:
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/YOUR_IMAGE.gif" alt="paper preview">
+            </td>
+            <td width="75%" valign="center">
+              <papertitle>Your Paper Title</papertitle>
+              <br>
+              <strong>Your Name</strong>, Coauthor One, Coauthor Two
+              <br>
+              <em>Venue</em>, Year
+              <br>
+              <a href="PAPER_URL">[Paper]</a> <a href="PROJECT_URL">[Project Page]</a>
+              <br>
+              <p>One-sentence summary of the work.</p>
+            </td>
+          </tr>
+        </tbody></table>
+        -->
+
+        <!-- Unused modules removed from the copied template: old publication list, visitor map. -->
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:center;font-size:small;">
+                &copy; Haoyu Wei | Last updated: April 19, 2026
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>
+</body>
+
+</html>
